@@ -75,11 +75,7 @@ endif
 
 #if /lib64 exists, then setup x86_64 library path to lib64 (good indication if a linux has /lib and lib64). 
 #Else, if it doesnt, then set as /lib. This is used in the make install target 
-ifeq ($(wildcard /lib64),)
 instlibdir.x86_64 = /lib/
-else
-instlibdir.x86_64 = /lib64/
-endif
 instlibdir.default   = /lib/
 
 #our actual install location for the library
