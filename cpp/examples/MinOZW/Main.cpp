@@ -92,11 +92,7 @@ NodeInfo* GetNodeInfo
 // <OnNotification>
 // Callback that is triggered when a value, group or node changes
 //-----------------------------------------------------------------------------
-void OnNotification
-(
-	Notification const* _notification,
-	void* _context
-)
+void OnNotification(Notification const* _notification,void* _context)
 {
 	// Must do this inside a critical section to avoid conflicts with the main thread
 	pthread_mutex_lock( &g_criticalSection );
@@ -286,14 +282,8 @@ int main( int argc, char* argv[] )
 
 	// Add a Z-Wave Driver
 	// Modify this line to set the correct serial port for your PC interface.
+	string port = "/dev/ttyZwave";
 
-#ifdef DARWIN
-	string port = "/dev/cu.usbserial";
-#elif WIN32
-        string port = "\\\\.\\COM6";
-#else
-	string port = "/dev/ttyUSB0";
-#endif
 	if ( argc > 1 )
 	{
 		port = argv[1];
